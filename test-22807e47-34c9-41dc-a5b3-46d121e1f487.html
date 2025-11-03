@@ -57,51 +57,6 @@
   </script>
   <!-- End of SleekFlow Embed Code -->
 
-  <!-- Optional: Fallback chat in case SleekFlow script fails to load -->
-  <div class="chat-fab" id="chatFab" title="Live chat" onclick="openChat()">Chat</div>
-  <div class="chat-modal" id="chatModal">
-    <div class="chat-header">Fallback Support</div>
-    <div class="chat-body" id="chatBody">
-      <div style="margin-bottom:10px;">This is a local fallback chat. SleekFlow widget should appear automatically when connected.</div>
-      <div id="messages"></div>
-    </div>
-    <div class="chat-input">
-      <input id="chatInput" placeholder="Type a message..." />
-      <button onclick="sendLocalMessage()">Send</button>
-    </div>
-  </div>
-
-  <script>
-    function openChat() {
-      const modal = document.getElementById('chatModal');
-      modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
-    }
-    function sendLocalMessage() {
-      const input = document.getElementById('chatInput');
-      const txt = input.value.trim();
-      if (!txt) return;
-      const messages = document.getElementById('messages');
-      const el = document.createElement('div');
-      el.style.padding = '8px 10px';
-      el.style.margin = '8px 0';
-      el.style.background = '#eef2ff';
-      el.style.borderRadius = '8px';
-      el.textContent = 'You: ' + txt;
-      messages.appendChild(el);
-      input.value = '';
-      setTimeout(() => {
-        const reply = document.createElement('div');
-        reply.style.padding = '8px 10px';
-        reply.style.margin = '8px 0';
-        reply.style.background = '#f1f5f9';
-        reply.style.borderRadius = '8px';
-        reply.textContent = 'Support: Thanks for testing — this is an automated reply.';
-        messages.appendChild(reply);
-        const body = document.getElementById('chatBody');
-        body.scrollTop = body.scrollHeight;
-      }, 800);
-    }
-
     // Hide fallback if SleekFlow widget is detected
     window.addEventListener('load', () => {
       setTimeout(() => {
